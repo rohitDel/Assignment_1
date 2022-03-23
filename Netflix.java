@@ -67,7 +67,7 @@ public class Netflix {
     public static void getShowByListedIn(List<NetflixMap> mapData, String listed_in, int n) {
         long start1 = System.nanoTime();
         List<NetflixMap> resultList = mapData.stream()
-                .filter( map -> map.getListed_in().equals(listed_in))
+                .filter( map -> map.getListed_in().contains(listed_in))
                 .limit(n)
                 .collect(Collectors.toList());
         resultList.forEach( map -> System.out.println(map.toString()));
