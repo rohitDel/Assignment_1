@@ -39,7 +39,7 @@ public class Netflix {
 
     public static List<NetflixMap> parseCsv() throws FileNotFoundException {
         List<NetflixMap> mapData = new ArrayList<>();
-        try (Scanner sc = new Scanner(new File("/Users/rohitgupta3/Downloads/netflix_titles.csv"))) {
+        try (Scanner sc = new Scanner(new File("resources/netflix_titles.csv"))) {
             while (sc.hasNext())  //returns a boolean value
             {
                 String data = sc.nextLine();
