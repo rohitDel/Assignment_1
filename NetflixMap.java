@@ -1,4 +1,4 @@
-public class NetflixMap {
+public class NetflixMap { //pojo class for mapping the csv file data
     private String sNo;
     private String type;
     private String name;

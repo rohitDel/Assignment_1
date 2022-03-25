@@ -13,7 +13,7 @@ public class Netflix {
         int n = sc.nextInt();
         List<NetflixMap> map = parseCsv();
         int option = 0;
-        while(option!=-1){
+        while(option!=-1){  //while loop for user input
             System.out.println("Please Enter any Operation or -1 to Exit"+'\n'+"1.Search by type."+'\n'+"2.Search by listed_in."+'\n'+"3.Search by type and country.");
             option=sc.nextInt();
             sc.nextLine();
@@ -39,7 +39,7 @@ public class Netflix {
 
     public static List<NetflixMap> parseCsv() throws FileNotFoundException {
         List<NetflixMap> mapData = new ArrayList<>();
-        try (Scanner sc = new Scanner(new File("resources/netflix_titles.csv"))) {
+        try (Scanner sc = new Scanner(new File("resources/netflix_titles.csv"))) { //parsing the data from csv file.
             while (sc.hasNext())  //returns a boolean value
             {
                 String data = sc.nextLine();
@@ -52,7 +52,7 @@ public class Netflix {
         return mapData;
     }
 
-    public static void getShowByCategory(List<NetflixMap> mapData, String type, int n) {
+    public static void getShowByCategory(List<NetflixMap> mapData, String type, int n) { //filter by type
         long start1 = System.nanoTime();
         List<NetflixMap> resultList = mapData.stream()
                 .filter( map -> map.getType().equals(type))
@@ -64,7 +64,7 @@ public class Netflix {
 
     }
 
-    public static void getShowByListedIn(List<NetflixMap> mapData, String listed_in, int n) {
+    public static void getShowByListedIn(List<NetflixMap> mapData, String listed_in, int n) { //filter by listed in
         long start1 = System.nanoTime();
         List<NetflixMap> resultList = mapData.stream()
                 .filter( map -> map.getListed_in().contains(listed_in))
@@ -74,7 +74,7 @@ public class Netflix {
         long end1 = System.nanoTime();
         System.out.println("Elapsed Time in nano seconds: "+ (end1-start1));
     }
-    public static void getShowByTypeCountry(List<NetflixMap> mapData, String type,String country, int n) {
+    public static void getShowByTypeCountry(List<NetflixMap> mapData, String type,String country, int n) { //filter by type and country
         long start1 = System.nanoTime();
         List<NetflixMap> resultList = mapData.stream()
                 .filter( map -> map.getType().equals(type) && map.getCountry().equals(country))
